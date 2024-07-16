@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: ${APP}
+objects:
+  - apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: allow-all-8080
+      namespace: ${PROJ}
+    spec:
+      ingress:
+        - from:
+            - namespaceSelector: {}
+              podSelector:
+                matchLabels:
+                  LSLServicesLabel: LSL
+          ports:
+            - port: 8080
+              protocol: TCP
+      podSelector: {}
+      policyTypes:
+        - Ingress
+parameters:
+  - description: Target project
+    name: PROJ
+  - description: Application name
+    name: APP

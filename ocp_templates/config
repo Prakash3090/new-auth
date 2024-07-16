@@ -1,0 +1,6 @@
+#
+# Project configuration
+# openshift project user, set this to grant edit rights to the project
+ENV_USER="Prakash_K Balagopal_Ramavarma Weelee_tan Sreeja_S Jaison_Baby 9hema_joshi WeeLee_Tan"
+# openshift project group, set this to grant edit rights to the project
+#ENV_GROUP=

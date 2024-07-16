@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: ${APP}
+objects:
+  - apiVersion: network.openshift.io/v1
+    kind: EgressNetworkPolicy
+    metadata:
+      name: egress-policy-${PROJ}
+      namespace: ${PROJ}
+    spec:
+      egress:
+        - to:
+            cidrSelector: 0.0.0.0/0
+          type: Allow
+parameters:
+  - description: Target project
+    name: PROJ
+  - description: Application name
+    name: APP
